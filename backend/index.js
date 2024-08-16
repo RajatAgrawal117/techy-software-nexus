@@ -19,10 +19,13 @@ app.use(
 // Routes
 const userRoutes = require("./routes/user");
 
+const productRoutes = require('./routes/product');
 
 app.use("/api/auth", userRoutes);
-
-
+app.use('/api/users', userRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/customers', require('./routes/customer'));
+app.use('/api/feedback', require('./routes/feedback'));
 
 
 
