@@ -1,3 +1,4 @@
+//components/ProductsService.js
 import ProductCard from "./ProductCard";
 
 export default function ProductsSection() {

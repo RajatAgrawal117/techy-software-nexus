@@ -1,3 +1,4 @@
+//components/ProductCard.js
 import Link from "next/link";
 
 export default function ProductCard({ imgSrc, title, description }) {

@@ -1,3 +1,4 @@
+//components/Header.js
 import Link from "next/link";
 import SocialLinks from "./SocialLinks";
 import NetworkIcon from "./icons/NetworkIcon";

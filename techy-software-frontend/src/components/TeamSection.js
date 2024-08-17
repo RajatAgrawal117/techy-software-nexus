@@ -1,4 +1,5 @@
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+// src/components/TeamSection.js
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 
 export default function TeamSection() {
   const teamMembers = [
@@ -23,7 +24,9 @@ export default function TeamSection() {
           <div key={member.name} className="flex flex-col items-center gap-2">
             <Avatar>
               <AvatarImage src={member.imgSrc} alt={member.name} />
-              <AvatarFallback>{member.name.split(" ")[0][0]}{member.name.split(" ")[1][0]}</AvatarFallback>
+              <AvatarFallback>
+                {member.name.split(" ")[0][0]}{member.name.split(" ")[1][0]}
+              </AvatarFallback>
             </Avatar>
             <div className="text-center">
               <h4 className="text-lg font-semibold text-primary-foreground">{member.name}</h4>

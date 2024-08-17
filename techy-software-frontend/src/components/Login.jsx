@@ -1,8 +1,9 @@
+//components/Login.jsx
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axiosInstance from './axiosInstance';
 import NavigationBar from './Navbar';
-import { FaEnvelope, FaLock, FaGoogle } from 'react-icons/fa';
+import { FaEnvelope, FaLock} from 'react-icons/fa';
 
 const Login = () => {
   const [email, setEmail] = useState('');

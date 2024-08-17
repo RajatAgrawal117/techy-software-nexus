@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import NavigationBar from "./Navbar";
+import HeroSection from "./HeroSection";
+import ContactSection from "./ContactSection";
+import TeamSection from "./TeamSection";
+import SocialLinks from "./SocialLinks";
 import "./Home.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function Home() {
+const Home = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      setUser({ name: "John Doe" });
+      setUser({ name: "John Doe" }); // Replace with actual user data
     }
   }, []);
 
@@ -23,6 +27,10 @@ function Home() {
     <div className="home-container">
       <NavigationBar user={user} onLogout={handleLogout} />
 
+      {/* Hero Section */}
+      <HeroSection />
+
+      {/* Services, Contact, and About Cards */}
       <Container className="mt-5">
         <Row className="text-center mb-5">
           <Col>
@@ -60,8 +68,20 @@ function Home() {
             </Card>
           </Col>
         </Row>
+      </Container>
 
-        <Row className="text-center mt-5">
+      {/* Team Section */}
+      <TeamSection />
+
+      {/* Contact Section */}
+      <ContactSection />
+
+      {/* Social Links */}
+      <SocialLinks />
+
+      {/* Login/Signup buttons at the bottom */}
+      <Container className="text-center mt-5">
+        <Row>
           <Col>
             {user ? (
               <Button variant="secondary" onClick={handleLogout}>Logout</Button>
@@ -76,6 +96,6 @@ function Home() {
       </Container>
     </div>
   );
-}
+};
 
 export default Home;
