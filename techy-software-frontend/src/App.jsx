@@ -1,31 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { UserProvider } from './contexts/UserContext';
 import Home from './components/Home';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import NavigationBar from './components/NavigationBar';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      setUser({ name: 'John Doe' });
-    }
-  }, []);
-
   return (
-    <Router>
-      <div className="app">
-        <Routes>
-          <Route path="/" element={<Home user={user} setUser={setUser} />} />
-          <Route path="/login" element={<Login setUser={setUser} />} />
-          <Route path="/signup" element={<Signup setUser={setUser} />} />
-        </Routes>
-      </div>
-    </Router>
+    <UserProvider>
+      <Router>
+        <div className="app">
+          <NavigationBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+          </Routes>
+        </div>
+      </Router>
+    </UserProvider>
   );
 }
 

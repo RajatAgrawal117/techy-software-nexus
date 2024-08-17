@@ -1,0 +1,23 @@
+.footer {
+    background: linear-gradient(45deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    color: white;
+    padding: 40px 0;
+  }
+  
+  .footer h5 {
+    color: #ffcc33;
+  }
+  
+  .footer p {
+    color: #dddddd;
+  }
+  
+  .footer a {
+    color: #ffcc33;
+    transition: color 0.3s;
+  }
+  
+  .footer a:hover {
+    color: #ffffff;
+  }
+  

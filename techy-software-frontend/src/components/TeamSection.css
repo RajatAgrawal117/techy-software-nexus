@@ -1,0 +1,98 @@
+/* General styling for the team section */
+.team-section {
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    padding: 40px;
+  }
+  
+  /* Title and description styling */
+  .team-section .intro {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .team-section .title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #333;
+  }
+  
+  .team-section .description {
+    font-size: 1.25rem;
+    color: #666;
+  }
+  
+  /* Grid layout for team members */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+  }
+  
+  /* Individual team member styling */
+  .team-member {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Avatar styling */
+  .avatar {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Member info styling */
+  .member-info .member-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .member-info .member-role {
+    font-size: 1rem;
+    color: #777;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .team-section .title {
+      font-size: 2.5rem;
+    }
+  
+    .team-section .description {
+      font-size: 1rem;
+    }
+  
+    .avatar {
+      width: 100px;
+      height: 100px;
+    }
+  
+    .member-info .member-name {
+      font-size: 1.25rem;
+    }
+  
+    .member-info .member-role {
+      font-size: 0.9rem;
+    }
+  }
+  

@@ -1,0 +1,33 @@
+.products-section {
+    padding: 4rem 0;
+    background-color: linear-gradient(135deg, #ff9671, #ff6f91);
+    color: white;
+    text-align: center;
+}
+
+.products-section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.products-section-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 3rem;
+    color: white;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

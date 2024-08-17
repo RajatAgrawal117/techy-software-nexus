@@ -5,6 +5,9 @@ import HeroSection from "./HeroSection";
 import ContactSection from "./ContactSection";
 import TeamSection from "./TeamSection";
 import SocialLinks from "./SocialLinks";
+import ProductsService from "./ProductsService";
+import FeedbackForm from "./FeedbackForm";
+import Footer from "./Footer";
 import "./Home.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -25,6 +28,7 @@ const Home = () => {
 
   return (
     <div className="home-container">
+      {/* Header */}
       <NavigationBar user={user} onLogout={handleLogout} />
 
       {/* Hero Section */}
@@ -70,30 +74,35 @@ const Home = () => {
         </Row>
       </Container>
 
+      {/* Products Section */}
+      <ProductsService />
+
       {/* Team Section */}
       <TeamSection />
 
-      {/* Contact Section */}
-      <ContactSection />
-
-      {/* Social Links */}
-      <SocialLinks />
-
-      {/* Login/Signup buttons at the bottom */}
-      <Container className="text-center mt-5">
-        <Row>
+      {/* Feedback Form */}
+      <Container className="my-5">
+        <Row className="text-center mb-4">
           <Col>
-            {user ? (
-              <Button variant="secondary" onClick={handleLogout}>Logout</Button>
-            ) : (
-              <>
-                <Button variant="primary" className="mr-2">Login</Button>
-                <Button variant="secondary">Sign Up</Button>
-              </>
-            )}
+            <h2>We Value Your Feedback</h2>
+            <p>Your input helps us to improve and serve you better.</p>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={{ span: 6, offset: 3 }}>
+            <FeedbackForm />
           </Col>
         </Row>
       </Container>
+
+      
+
+   
+
+      {/* Footer */}
+      <Footer />
+
+    
     </div>
   );
 };

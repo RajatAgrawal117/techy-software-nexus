@@ -1,0 +1,88 @@
+/* Navbar container styling */
+.navbar-custom {
+    background: linear-gradient(135deg, #f06, #a16ae8);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s;
+  }
+  
+  .navbar-custom:hover {
+    background: linear-gradient(135deg, #f06, #a16ae8);
+  }
+  
+  /* Brand styling */
+  .brand-custom {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    transition: color 0.3s;
+  }
+  
+  .brand-custom:hover {
+    color: #f8f9fa;
+  }
+  
+  /* Navbar link styling */
+  .nav-link-custom {
+    font-size: 1.1rem;
+    color: #f8f9fa !important;
+    margin-right: 15px;
+    transition: color 0.3s;
+  }
+  
+  .nav-link-custom:hover {
+    color: #ff9671 !important;
+  }
+  
+  /* User dropdown styling */
+  .user-dropdown {
+    color: #f8f9fa;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+  
+  .user-dropdown:hover {
+    color: #ff9671;
+  }
+  
+  /* Button styling */
+  .btn-outline-light {
+    border-color: #ff9671;
+    color: #ff9671;
+    border-radius: 25px;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+  }
+  
+  .btn-outline-light:hover {
+    background: #ff9671;
+    color: #fff;
+  }
+  
+  .btn-light {
+    background: #fff;
+    color: #f06;
+    border-radius: 25px;
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  .btn-light:hover {
+    background: #f06;
+    color: #fff;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .brand-custom {
+      font-size: 1.25rem;
+    }
+  
+    .nav-link-custom {
+      font-size: 1rem;
+      margin-right: 10px;
+    }
+  
+    .user-dropdown {
+      font-size: 0.9rem;
+    }
+  }
+  
