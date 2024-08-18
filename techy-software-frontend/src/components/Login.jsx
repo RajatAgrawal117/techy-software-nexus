@@ -1,9 +1,9 @@
 //components/Login.jsx
+import './Login.css';
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import axiosInstance from './axiosInstance';
-import NavigationBar from './Navbar';
 import { FaEnvelope, FaLock} from 'react-icons/fa';
+import { loginUser } from '../api';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -16,11 +16,12 @@ const Login = () => {
     setError('');
 
     try {
-      const response = await axiosInstance.post('/auth/login', { email, password });
+      const response = await loginUser(email, password);
       const { data } = response;
       console.log('Login successful:', data);
       localStorage.setItem('token', data.token);
       localStorage.setItem('username', data.username);
+    
       navigate('/');
     } catch (err) {
       console.error('Login error:', err);
@@ -30,7 +31,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
-      <NavigationBar user={null} onLogout={() => {}} />
+      
       <div className="flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>

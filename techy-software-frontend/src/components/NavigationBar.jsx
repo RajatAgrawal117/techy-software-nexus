@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Navbar, Nav, Container, Button, NavDropdown } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaUser, FaSignOutAlt } from 'react-icons/fa';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo.jpg';
 import './NavigationBar.css';
+
 
 function NavigationBar() {
   const [user, setUser] = useState(null);

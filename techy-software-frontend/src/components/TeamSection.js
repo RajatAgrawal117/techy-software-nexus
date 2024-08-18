@@ -8,10 +8,10 @@ import './TeamSection.css';
 
 export default function TeamSection() {
   const teamMembers = [
-    { name: "John Doe", role: "Web Developer", imgSrc: person1 },
+    { name: "Mike Tyler", role: "Web Developer", imgSrc: person1 },
     { name: "Jane Smith", role: "UI/UX Designer", imgSrc: person2 },
-    { name: "Michael Johnson", role: "Project Manager", imgSrc: person3 },
-    { name: "Emily Davis", role: "Content Strategist", imgSrc: person4 },
+    { name: "Harry Johnson", role: "Project Manager", imgSrc: person3 },
+    { name: "Rick Davis", role: "Content Strategist", imgSrc: person4 },
   ];
 
   return (

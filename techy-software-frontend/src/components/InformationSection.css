@@ -1,0 +1,58 @@
+/* Information Section styling */
+.information-section {
+    background: linear-gradient(135deg, #a16ae8, #f06); /* Match the gradient with the theme */
+    color: white;
+    padding: 3rem 0;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .information-section h2 {
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .information-section p {
+    color: #f8f9fa;
+    margin-bottom: 2rem;
+  }
+  
+  .information-section .form-control {
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent input background */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+  }
+  
+  .information-section .form-control::placeholder {
+    color: #e9ecef; /* Light placeholder color */
+  }
+  
+  .information-section .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-color: #ffc107; /* Bootstrap's warning color */
+    box-shadow: none;
+  }
+  
+  .information-section .btn-light {
+    background: linear-gradient(135deg, #ff6f91, #ff9671);
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    transition: background 0.3s;
+  }
+  
+  .information-section .btn-light:hover {
+    background: linear-gradient(135deg, #ff9671, #ff6f91);
+    color: #fff;
+  }
+  
+  @media (max-width: 768px) {
+    .information-section {
+      padding: 2rem 1rem;
+    }
+  }
+  

@@ -2,9 +2,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axiosInstance from './axiosInstance';
-import NavigationBar from './Navbar';
 import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
-
+import './Signup.css';
 function Signup({ setUser }) {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
@@ -45,7 +44,7 @@ function Signup({ setUser }) {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
-      <NavigationBar />
+    
       <div className="flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
