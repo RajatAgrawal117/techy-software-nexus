@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:4000/api",
+  baseURL: "https://techy-software-nexus.onrender.com/api",
 });
 
 // Attach JWT token to each request if available
