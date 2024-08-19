@@ -1,50 +1,67 @@
-//Component/Signup.jsx
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import axiosInstance from './axiosInstance';
-import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
-import './Signup.css';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axiosInstance from "./axiosInstance";
+import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./Signup.css";
+
 function Signup({ setUser }) {
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSignup = async (e) => {
     e.preventDefault();
+    setError("");
     try {
-      const signupResponse = await axiosInstance.post('/auth/signup', {
+      // Signup request
+      await axiosInstance.post("/auth/signup", {
         username,
         email,
-        password
+        password,
       });
-  
+
       // Automatically login after successful signup
-      const loginResponse = await axiosInstance.post('/auth/login', {
+      const loginResponse = await axiosInstance.post("/auth/login", {
         email,
-        password
+        password,
       });
-  
-      localStorage.setItem('token', loginResponse.data.token);
-      localStorage.setItem('username', loginResponse.data.username);
+
+      localStorage.setItem("token", loginResponse.data.token);
+      localStorage.setItem("username", loginResponse.data.user.username);
       setUser(loginResponse.data.user);
-      setSuccess('Signup successful! You are now logged in.');
-      setError('');
-  
-      // Redirect to home page or dashboard
-      navigate('/');
+
+      toast.success("Signup successful! You are now logged in.", {
+        position: "top-center",
+        autoClose: 3000,
+      });
+
+      // Hard refresh the home page after a short delay
+      setTimeout(() => {
+        navigate("/"); // Navigate to the home page
+        window.location.reload(); // Hard refresh the page
+      }, 3000);
     } catch (error) {
       console.error(error);
-      setError(error.response?.data?.message || 'Signup failed. Please try again.');
-      setSuccess('');
+      setError(
+        error.response?.data?.message || "Signup failed. Please try again."
+      );
+      toast.error(
+        error.response?.data?.message || "Signup failed. Please try again.",
+        {
+          position: "top-center",
+          autoClose: 3000,
+        }
+      );
     }
   };
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
-    
+      <ToastContainer />
       <div className="flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
@@ -55,7 +72,9 @@ function Signup({ setUser }) {
           <form className="mt-8 space-y-6" onSubmit={handleSignup}>
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
-                <label htmlFor="username" className="sr-only">Username</label>
+                <label htmlFor="username" className="sr-only">
+                  Username
+                </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <FaUser className="h-5 w-5 text-gray-400" />
@@ -73,7 +92,9 @@ function Signup({ setUser }) {
                 </div>
               </div>
               <div>
-                <label htmlFor="email" className="sr-only">Email address</label>
+                <label htmlFor="email" className="sr-only">
+                  Email address
+                </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <FaEnvelope className="h-5 w-5 text-gray-400" />
@@ -92,7 +113,9 @@ function Signup({ setUser }) {
                 </div>
               </div>
               <div>
-                <label htmlFor="password" className="sr-only">Password</label>
+                <label htmlFor="password" className="sr-only">
+                  Password
+                </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <FaLock className="h-5 w-5 text-gray-400" />
@@ -112,8 +135,9 @@ function Signup({ setUser }) {
               </div>
             </div>
 
-            {error && <p className="mt-2 text-center text-sm text-red-600">{error}</p>}
-            {success && <p className="mt-2 text-center text-sm text-green-600">{success}</p>}
+            {error && (
+              <p className="mt-2 text-center text-sm text-red-600">{error}</p>
+            )}
 
             <div>
               <button
@@ -126,8 +150,11 @@ function Signup({ setUser }) {
           </form>
 
           <p className="mt-2 text-center text-sm text-gray-600">
-            Already have an account?{' '}
-            <Link to="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
+            Already have an account?{" "}
+            <Link
+              to="/login"
+              className="font-medium text-indigo-600 hover:text-indigo-500"
+            >
               Sign in
             </Link>
           </p>

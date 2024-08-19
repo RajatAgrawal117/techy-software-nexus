@@ -4,13 +4,16 @@ import webDeveloperImg from '../img/web-developer.jpg';
 import analyticsImg from '../img/analytics.jpg';
 import cloudImg from '../img/cloud.jpg';
 import eCommerceImg from '../img/e-commerce.jpg';
-
+import mobileAppImg from '../img/mobileapp.jpg';
+import seo from '../img/seo.jpg';
 export default function ProductsSection() {
   const products = [
     { title: "Nexus Web Builder", description: "Effortlessly create stunning websites with our intuitive drag-and-drop interface.", imgSrc: webDeveloperImg },
     { title: "Nexus Analytics", description: "Gain valuable insights into your website's performance and user behavior.", imgSrc: analyticsImg },
     { title: "Nexus Cloud Hosting", description: "Host your website on our secure and scalable cloud infrastructure.", imgSrc: cloudImg },
     { title: "Nexus E-commerce", description: "Launch your online store with our all-in-one e-commerce platform.", imgSrc: eCommerceImg },
+    {title:"Nexus Mobile App", description:"Build a mobile app for your business with our easy-to-use app builder.", imgSrc:mobileAppImg},
+    {title:"Nexus SEO", description:"Improve your website's search engine ranking and attract more visitors.", imgSrc:seo},
   ];
 
   return (

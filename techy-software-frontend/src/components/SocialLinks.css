@@ -1,0 +1,30 @@
+.social-links-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+  }
+  
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #ff6f91, #ff9671);
+    border-radius: 50%;
+    transition: background 0.3s, transform 0.3s;
+  }
+  
+  .social-link:hover {
+    background: linear-gradient(135deg, #ff9671, #ff6f91);
+    transform: translateY(-5px);
+  }
+  
+  .social-icon {
+    color: white;
+    width: 20px;
+    height: 20px;
+  }
+  

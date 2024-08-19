@@ -1,37 +1,66 @@
-//components/Login.jsx
-import './Login.css';
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { FaEnvelope, FaLock} from 'react-icons/fa';
-import { loginUser } from '../api';
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { FaEnvelope, FaLock } from "react-icons/fa";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axiosInstance from "./axiosInstance";
+import "./Login.css";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     try {
-      const response = await loginUser(email, password);
-      const { data } = response;
-      console.log('Login successful:', data);
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('username', data.username);
-    
-      navigate('/');
+      const response = await axiosInstance.post("/auth/login", {
+        email,
+        password,
+      });
+      const data = response.data;
+
+      console.log("Login successful:", data);
+
+      if (data && data.token) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("username", data.user.username);
+
+        toast.success("Login successful!", {
+          position: "top-center",
+          autoClose: 3000,
+        });
+
+        // Navigate to the home page
+        navigate("/");
+      } else {
+        setError("Login failed. Token not received.");
+        toast.error("Login failed. Token not received.", {
+          position: "top-center",
+          autoClose: 3000,
+        });
+      }
     } catch (err) {
-      console.error('Login error:', err);
-      setError(err?.response?.data?.message || 'Login failed. Please try again.');
+      console.error("Login error:", err);
+      setError(
+        err?.response?.data?.message || "Login failed. Please try again."
+      );
+      toast.error(
+        err?.response?.data?.message || "Login failed. Please try again.",
+        {
+          position: "top-center",
+          autoClose: 3000,
+        }
+      );
     }
   };
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
-      
+      <ToastContainer />
       <div className="flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
@@ -42,7 +71,9 @@ const Login = () => {
           <form className="mt-8 space-y-6" onSubmit={handleLogin}>
             <div className="rounded-md -space-y-px">
               <div>
-                <label htmlFor="email" className="sr-only">Email address</label>
+                <label htmlFor="email" className="sr-only">
+                  Email address
+                </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <FaEnvelope className="h-5 w-5 text-gray-400" />
@@ -61,7 +92,9 @@ const Login = () => {
                 </div>
               </div>
               <div>
-                <label htmlFor="password" className="sr-only">Password</label>
+                <label htmlFor="password" className="sr-only">
+                  Password
+                </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <FaLock className="h-5 w-5 text-gray-400" />
@@ -81,7 +114,9 @@ const Login = () => {
               </div>
             </div>
 
-            {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+            {error && (
+              <p className="text-red-500 text-sm text-center">{error}</p>
+            )}
 
             <div className="mt-6">
               <button
@@ -104,13 +139,14 @@ const Login = () => {
                 </span>
               </div>
             </div>
-
-            
           </div>
 
           <p className="mt-2 text-center text-sm text-gray-600">
-            Don't have an account?{' '}
-            <Link to="/signup" className="font-medium text-indigo-600 hover:text-indigo-500">
+            Don't have an account?{" "}
+            <Link
+              to="/signup"
+              className="font-medium text-indigo-600 hover:text-indigo-500"
+            >
               Sign up
             </Link>
           </p>

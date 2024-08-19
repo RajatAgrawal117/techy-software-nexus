@@ -8,8 +8,8 @@ import './TeamSection.css';
 
 export default function TeamSection() {
   const teamMembers = [
-    { name: "Mike Tyler", role: "Web Developer", imgSrc: person1 },
-    { name: "Jane Smith", role: "UI/UX Designer", imgSrc: person2 },
+    { name: "Natasha Miller", role: "Web Developer", imgSrc: person1 },
+    { name: "Tanner Smith", role: "UI/UX Designer", imgSrc: person2 },
     { name: "Harry Johnson", role: "Project Manager", imgSrc: person3 },
     { name: "Rick Davis", role: "Content Strategist", imgSrc: person4 },
   ];
@@ -18,7 +18,7 @@ export default function TeamSection() {
     <section id="about" className="team-section container py-12 md:py-24 lg:py-32">
       <div className="intro space-y-4">
         <h2 className="title">
-          Meet the Nexus Software Team
+          Meet the Techy Software Team
         </h2>
         <p className="description">
           Our talented team of web developers, designers, and strategists are dedicated to helping you succeed.

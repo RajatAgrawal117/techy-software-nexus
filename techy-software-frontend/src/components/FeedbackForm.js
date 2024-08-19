@@ -1,14 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
+
 import './FeedbackForm.css';
+import axiosInstance from './axiosInstance';
 
 export default function FeedbackForm() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
+    userId: '', // This will be set from the token
     message: ''
   });
 
   const [formStatus, setFormStatus] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    // Retrieve the token from local storage
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        // Decode the token to get the user ID
+        const decodedToken = jwtDecode(token);
+        console.log(decodedToken);
+        setFormData({ ...formData, userId: decodedToken.id });
+      } catch (err) {
+        console.error('Error decoding token:', err);
+        setError('Invalid token. Please log in again.');
+      }
+    } else {
+      setError('No token found. Please log in.');
+    }
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -18,42 +40,29 @@ export default function FeedbackForm() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Form submission logic here (e.g., send to backend or API)
-    
-    // For now, just show a success message
-    setFormStatus('Thank you for your feedback!');
-    setFormData({ name: '', email: '', message: '' });
+
+    try {
+      const feedbackData = { userId: formData.userId, message: formData.message };
+
+      const response = await axiosInstance.post('/feedback', feedbackData);
+
+      if (response.status === 201) {
+        setFormStatus('Thank you for your feedback!');
+        setError(null);
+        setFormData({ userId: formData.userId, message: '' });
+      }
+    } catch (error) {
+      console.error('Error submitting feedback:', error);
+      setError('Failed to submit feedback. Please try again later.');
+    }
   };
 
   return (
     <div className="feedback-form-container">
       <h2 className="feedback-form-title">We Value Your Feedback</h2>
       <form className="feedback-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
         <div className="form-group">
           <label htmlFor="message">Message:</label>
           <textarea
@@ -67,6 +76,7 @@ export default function FeedbackForm() {
         <button type="submit" className="submit-button">Submit Feedback</button>
       </form>
       {formStatus && <p className="form-status">{formStatus}</p>}
+      {error && <p className="form-error">{error}</p>}
     </div>
   );
 }
