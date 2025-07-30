@@ -1,11 +1,11 @@
 import './ProductsService.css';
-import ProductCard from "./ProductCard";
-import webDeveloperImg from '../img/web-developer.jpg';
-import analyticsImg from '../img/analytics.jpg';
-import cloudImg from '../img/cloud.jpg';
-import eCommerceImg from '../img/e-commerce.jpg';
-import mobileAppImg from '../img/mobileapp.jpg';
-import seo from '../img/seo.jpg';
+import { ProductCard } from "../../common";
+import webDeveloperImg from '../../../assets/images/web-developer.jpg';
+import analyticsImg from '../../../assets/images/analytics.jpg';
+import cloudImg from '../../../assets/images/cloud.jpg';
+import eCommerceImg from '../../../assets/images/e-commerce.jpg';
+import mobileAppImg from '../../../assets/images/mobileapp.jpg';
+import seo from '../../../assets/images/seo.jpg';
 export default function ProductsSection() {
   const products = [
     { title: "Nexus Web Builder", description: "Effortlessly create stunning websites with our intuitive drag-and-drop interface.", imgSrc: webDeveloperImg },

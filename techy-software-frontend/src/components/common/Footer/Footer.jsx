@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import './Footer.css';
-import SocialLinks from './SocialLinks';
+import { SocialLinks } from '../../sections';
 const Footer = () => {
   return (
     <footer className="footer">
@@ -12,11 +12,7 @@ const Footer = () => {
             <p>Connect with us on social platforms.</p>
             <SocialLinks/>
           </Col>
-          <Col md={4}>
-            <h5>Newsletter</h5>
-            
-            {/* Newsletter Signup Form */}
-          </Col>
+          
           <Col md={4}>
             <h5>Contact Us</h5>
             <p>Address, phone number, and email.</p>

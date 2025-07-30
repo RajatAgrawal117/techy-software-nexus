@@ -1,9 +1,9 @@
 import React from 'react';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
-import person1 from '../img/person1.jpg';
-import person2 from '../img/person2.jpg';
-import person3 from '../img/person3.jpeg';
-import person4 from '../img/person4.jpg';
+import { Avatar, AvatarFallback, AvatarImage } from '../../ui/avatar';
+import person1 from '../../../assets/images/person1.jpg';
+import person2 from '../../../assets/images/person2.jpg';
+import person3 from '../../../assets/images/person3.jpeg';
+import person4 from '../../../assets/images/person4.jpg';
 import './TeamSection.css';
 
 export default function TeamSection() {

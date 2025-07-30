@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FaTwitter, FaLinkedin, FaGitlab, FaInstagram, FaFacebook } from 'react-icons/fa';
+import { FaLinkedin, FaInstagram, FaFacebook } from 'react-icons/fa';
 import './SocialLinks.css'; // Assuming you have a CSS file for the component
 
 export default function SocialLinks() {

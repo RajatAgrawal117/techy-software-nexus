@@ -1,14 +1,10 @@
 import React from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import HeroSection from "./HeroSection";
-import TeamSection from "./TeamSection";
-import ProductsService from "./ProductsService";
-import FeedbackForm from "./FeedbackForm";
-import Footer from "./Footer";
+import { HeroSection, TeamSection, ProductsService, InformationSection, ProductSection } from "../../components/sections";
+import { FeedbackForm } from "../../components/forms";
+import { Footer } from "../../components/common";
 import "./Home.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import InformationSection from "./InformationSection";
-import ProductSection from "./ProductSection";
 
 const Home = () => {
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-import axiosInstance from './axiosInstance'; // Import the Axios instance
+import { axiosInstance } from '../../../services'; // Import the Axios instance
 import './InformationSection.css'; // Include your custom CSS for styling
 
 const InformationSection = () => {

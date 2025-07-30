@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import webDeveloperImg from '../img/web-developer.jpg';
+import webDeveloperImg from '../../../assets/images/web-developer.jpg';
 import './HeroSection.css';
 
 export default function HeroSection() {

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Button, Form, Modal } from 'react-bootstrap';
-import axios from 'axios';
-import axiosInstance from './axiosInstance';
+import { axiosInstance } from '../../../services';
 
 const ProductsSection = () => {
   const [products, setProducts] = useState([]);

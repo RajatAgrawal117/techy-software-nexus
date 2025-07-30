@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './components/Home';
-import Login from './components/Login';
-import Signup from './components/Signup';
-import NavigationBar from './components/NavigationBar';
+import { Home, Login, Signup } from './pages';
+import { NavigationBar } from './components/common';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 

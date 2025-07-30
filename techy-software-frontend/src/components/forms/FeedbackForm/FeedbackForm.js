@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 
 import './FeedbackForm.css';
-import axiosInstance from './axiosInstance';
+import { axiosInstance } from '../../../services';
 
 export default function FeedbackForm() {
   const [formData, setFormData] = useState({
@@ -22,7 +21,7 @@ export default function FeedbackForm() {
         // Decode the token to get the user ID
         const decodedToken = jwtDecode(token);
         console.log(decodedToken);
-        setFormData({ ...formData, userId: decodedToken.id });
+        setFormData(prevData => ({ ...prevData, userId: decodedToken.id }));
       } catch (err) {
         console.error('Error decoding token:', err);
         setError('Invalid token. Please log in again.');
