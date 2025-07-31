@@ -4,6 +4,7 @@ import { FaEnvelope, FaLock } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { axiosInstance } from "../../services";
+import { useAuth } from "../../context/AuthContext.jsx";
 import "./Login.css";
 
 const Login = () => {
@@ -11,6 +12,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -26,16 +28,14 @@ const Login = () => {
       console.log("Login successful:", data);
 
       if (data && data.token) {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("username", data.user.username);
+        login(data.token);
 
         toast.success("Login successful!", {
           position: "top-center",
           autoClose: 3000,
         });
 
-        // Navigate to the home page
-        navigate("/");
+        navigate("/dashboard");
       } else {
         setError("Login failed. Token not received.");
         toast.error("Login failed. Token not received.", {

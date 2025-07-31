@@ -20,20 +20,20 @@ const createProduct = async (req, res) => {
   }
 };
 
-// Get all products
+// Get all products for logged-in user
 const getProducts = async (req, res) => {
   try {
-    const products = await Product.find();
+    const products = await Product.find({ user: req.user.id });
     res.json(products);
   } catch (error) {
     res.status(500).json({ message: "Server error" });
   }
 };
 
-// Get a specific product by ID
+// Get a specific product by ID for logged-in user
 const getProductById = async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findOne({ _id: req.params.id, user: req.user.id });
 
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
@@ -45,12 +45,12 @@ const getProductById = async (req, res) => {
   }
 };
 
-// Update a product by ID
+// Update a product by ID for logged-in user
 const updateProduct = async (req, res) => {
   const { name, description, price } = req.body;
 
   try {
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findOne({ _id: req.params.id, user: req.user.id });
 
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
@@ -68,10 +68,10 @@ const updateProduct = async (req, res) => {
   }
 };
 
-// Delete a product by ID
+// Delete a product by ID for logged-in user
 const deleteProduct = async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findOne({ _id: req.params.id, user: req.user.id });
 
     if (!product) {
       return res.status(404).json({ message: "Product not found" });

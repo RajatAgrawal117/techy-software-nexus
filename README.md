@@ -1,4 +1,3 @@
-
 # Techy Software - Full Stack Application
 
 ## Table of Contents
@@ -159,6 +158,50 @@ All APIs are working and have been tested thoroughly.
 
 - All API endpoints have been tested using **Postman** and work as expected.
 - The frontend has been tested manually across different browsers and devices to ensure responsiveness and functionality.
+
+## Testing Login Credentials
+
+For testing purposes, you can use the following credentials:
+
+- **Email**: testing765@gmail.com
+- **Password**: password
+
+## Overview
+
+This project is designed to showcase a full-stack application with a focus on modern web development practices. Below are the key highlights to help recruiters navigate and understand the project:
+
+### Key Features
+
+- **User Authentication**: Secure login and signup functionality.
+- **Product Management**: View and manage products.
+- **Feedback System**: Collect and manage user feedback.
+- **Responsive Design**: Optimized for all devices.
+
+### How to Run the Project
+
+1. **Backend**:
+   - Navigate to the `backend` directory.
+   - Install dependencies using `npm install`.
+   - Configure the `.env` file with the required environment variables.
+   - Start the server using `npm start`.
+
+2. **Frontend**:
+   - Navigate to the `frontend` directory.
+   - Install dependencies using `npm install`.
+   - Start the development server using `npm start`.
+
+### Technologies Used
+
+- **Backend**: Node.js, Express.js, MongoDB
+- **Frontend**: React.js, React Bootstrap
+
+### Project Structure
+
+The project is organized into `backend` and `frontend` directories, each with a clear structure for controllers, models, routes, and components.
+
+### API Documentation
+
+Detailed API documentation is available in the `Backend API Endpoints` section of this README.
 
 ## Contributing
 

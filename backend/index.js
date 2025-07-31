@@ -2,6 +2,7 @@ const express = require("express");
 require("dotenv").config();
 const app = express();
 const cors = require("cors");
+const { swaggerUi, specs } = require('./swagger');
 
 const port = process.env.PORT || 4000;
 // Middleware
@@ -25,6 +26,17 @@ app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/customers", customerRoutes);
 app.use("/api/feedback", require("./routes/feedback"));
+
+// Swagger Documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+
+// Root route
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Welcome to Techy Software API',
+    documentation: 'Visit /api-docs for API documentation'
+  });
+});
 
 // Database connection
 const db = require("./config/database");

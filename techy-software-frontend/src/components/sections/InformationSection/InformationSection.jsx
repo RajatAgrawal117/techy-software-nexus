@@ -23,7 +23,13 @@ const InformationSection = () => {
     e.preventDefault();
     // Send customer details to the backend using Axios
     try {
-      const response = await axiosInstance.post('/customers', customerDetails); // Update the endpoint if necessary
+      const response = await axiosInstance.post('/inquiries', {
+        name: customerDetails.name,
+        email: customerDetails.email,
+        phone: customerDetails.phone,
+        serviceInterest: 'General Inquiry',
+        message: customerDetails.message
+      });
 
       if (response.status === 201) {
         alert('Your details have been submitted successfully!');

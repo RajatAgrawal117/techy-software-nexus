@@ -1,25 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Navbar, Nav, Container, Button, NavDropdown } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { FaUser, FaSignOutAlt } from "react-icons/fa";
+import { FaUser, FaSignOutAlt, FaTachometerAlt, FaCog } from "react-icons/fa";
+import { useAuth } from "../../../context/AuthContext.jsx";
 import logo from "../../../assets/images/logo.jpg";
 import "./NavigationBar.css";
 
-function NavigationBar() {
-  const [user, setUser] = useState(null);
+const NavigationBar = () => {
+  const { user, isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      setUser({ name: "Welcome back!" });
-    }
-  }, []);
-
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    setUser(null);
-    navigate("/"); // Redirect to home page after logout
+    logout();
+    navigate("/");
   };
 
   return (
@@ -61,17 +54,28 @@ function NavigationBar() {
             </Nav.Link>
           </Nav>
           <Nav>
-            {user ? (
+            {isAuthenticated ? (
               <NavDropdown
                 title={
                   <span className="user-dropdown">
                     <FaUser className="me-2" />
-                    {user.name}
+                    {user?.username || 'User'}
                   </span>
                 }
                 id="basic-nav-dropdown"
                 align="end"
               >
+                <NavDropdown.Item as={Link} to="/dashboard">
+                  <FaTachometerAlt className="me-2" />
+                  Dashboard
+                </NavDropdown.Item>
+                {user?.role === 'admin' && (
+                  <NavDropdown.Item as={Link} to="/admin">
+                    <FaCog className="me-2" />
+                    Admin Panel
+                  </NavDropdown.Item>
+                )}
+                <NavDropdown.Divider />
                 <NavDropdown.Item onClick={handleLogout}>
                   <FaSignOutAlt className="me-2" />
                   Logout

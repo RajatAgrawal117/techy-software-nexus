@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../services";
+import { useAuth } from "../../context/AuthContext.jsx";
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Signup.css";
 
-function Signup({ setUser }) {
+const Signup = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,19 +32,15 @@ function Signup({ setUser }) {
         password,
       });
 
-      localStorage.setItem("token", loginResponse.data.token);
-      localStorage.setItem("username", loginResponse.data.user.username);
-      setUser(loginResponse.data.user);
+      login(loginResponse.data.token);
 
       toast.success("Signup successful! You are now logged in.", {
         position: "top-center",
         autoClose: 3000,
       });
 
-      // Hard refresh the home page after a short delay
       setTimeout(() => {
-        navigate("/"); // Navigate to the home page
-        window.location.reload(); // Hard refresh the page
+        navigate("/dashboard");
       }, 3000);
     } catch (error) {
       console.error(error);

@@ -24,7 +24,7 @@ const Home = () => {
             </p>
           </Col>
         </Row>
-
+{/* 
         <Row>
           <Col md={4}>
             <Card className="mb-4">
@@ -59,7 +59,7 @@ const Home = () => {
               </Card.Body>
             </Card>
           </Col>
-        </Row>
+        </Row> */}
       </Container>
 
       {/* Products Section */}

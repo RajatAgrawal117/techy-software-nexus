@@ -1,24 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Home, Login, Signup } from './pages';
-import { NavigationBar } from './components/common';
+import Home from './pages/Home/Home';
+import Login from './pages/Login/Login';
+import Signup from './pages/Signup/Signup';
+import NavigationBar from './components/common/NavigationBar/NavigationBar';
+import ProtectedRoute from './components/common/ProtectedRoute/ProtectedRoute.jsx';
+import { AuthProvider } from './context/AuthContext.jsx';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const [user, setUser] = useState(null);
-
   return (
-    <Router>
-      <div className="app">
-        <NavigationBar user={user} setUser={setUser} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route exact path="/login" element={<Login setUser={setUser} />} />
-          <Route exact path="/signup" element={<Signup setUser={setUser} />} />
-        </Routes>
-      </div>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <div className="app">
+          <NavigationBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            {/* Dashboard and AdminDashboard routes removed */}
+          </Routes>
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
 
