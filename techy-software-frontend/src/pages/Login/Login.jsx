@@ -35,7 +35,7 @@ const Login = () => {
           autoClose: 3000,
         });
 
-        navigate("/dashboard");
+        navigate("/");
       } else {
         setError("Login failed. Token not received.");
         toast.error("Login failed. Token not received.", {
